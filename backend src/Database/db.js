@@ -1,6 +1,10 @@
 import mongoose from 'mongoose';
-import db from '../Database/schema';
+import todoSchema from './schema'
+import env from 'dotenv'
+env.config();
 
-mongoose.connect(MONGO_URL);
-mongoose.model(db);
+mongoose.connect(process.env.MONGO_URL);
+const todo = mongoose.model("Todos",todoSchema);
+
+module.exports = todo;
 

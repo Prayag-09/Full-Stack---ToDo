@@ -1,10 +1,9 @@
-import mongoose from 'mongoose';
-import todoSchema from './schema'
-import env from 'dotenv'
-env.config();
+const mongoose = require('mongoose');
+const todoSchema = require('./schema')
+const dbLink = require('./env');
 
-mongoose.connect(process.env.MONGO_URL);
+mongoose.connect(dbLink);
+
 const todo = mongoose.model("Todos",todoSchema);
 
 module.exports = todo;
-
